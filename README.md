@@ -22,6 +22,7 @@ hover.getAllDomains(function (err, domains) {
 * getDomain(domain, cb)
 * getDomainDns(domain, cb)
 * createARecord (domain, subdomain, ip, cb)
+* createCNAMERecord (domain, subdomain, hostname, cb)
 * createMXRecord (domain, subdomain, priority, ip, cb)
 * updateDomainDns (dns, ip, cb)
 * removeDns (dns, cb)
