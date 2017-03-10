@@ -87,6 +87,24 @@ module.exports = function (username, password) {
     }
 
     /**
+     * Create a new A record under the specified domain
+     *
+     * @param {String} domain Domain identifier
+     * @param {String} subdomain Subdomain of record
+     * @param {String} hostname Hostname of record
+     * @param {Function} cb
+     * @api public
+     */
+    function createCNAMERecord (domain, subdomain, hostname, cb) {
+        var body = {
+            name: subdomain,
+            type: 'CNAME',
+            content: hostname
+        };
+        _hoverRequest('POST', '/domains/' + domain + '/dns', body, cb);
+    }
+
+    /**
      * Create a new MX record under the specified domain
      *
      * @param {String} domain Domain identifier
@@ -218,6 +236,7 @@ module.exports = function (username, password) {
         getDomain: getDomain,
         getDomainDns: getDomainDns,
         createARecord: createARecord,
+        createCNAMERecord: createCNAMERecord,
         createMXRecord: createMXRecord,
         updateDomainDns: updateDomainDns,
         removeDns: removeDns
